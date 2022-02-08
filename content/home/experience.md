@@ -43,9 +43,7 @@ experience:
     location: Accra
     date_start: '2017-03-13'
     date_end: '2019-03-30'
-    Responsibility include:
-    
-    * Ranking sales lead
+    Responsibility include: Ranking sales lead
 
 design:
   columns: '2'
