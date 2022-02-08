@@ -28,9 +28,6 @@ education:
   - course: Bsc in Mathematics
     institution: Kwame Nkrumah University of Science and Technology
     year: 2010-2014
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
 
 # Social/Academic Networking
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
@@ -45,10 +42,10 @@ social:
   link: https://twitter.com/daniel__abban
 - icon: graduation-cap  # Alternatively, use `google-scholar` icon from `ai` icon pack
   icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+#  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/danabban
+#  link: https://github.com/danabban
 - icon: linkedin
   icon_pack: fab
   link: https://linkedin.com/in/danielabban/
