@@ -1,7 +1,7 @@
 ---
 title: Terms
 date: "2018-06-28T00:00:00+01:00"
-draft: true
+draft: false
 share: false
 commentable: false
 editable: false
@@ -12,4 +12,4 @@ header:
   image: ""
 ---
 
-Add your terms here and set `draft: false` to publish it. Otherwise, delete this file if you don't need it.
+The content of the pages of this website is for your general information and use only. 
