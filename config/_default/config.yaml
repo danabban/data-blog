@@ -4,7 +4,7 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: Academic # Website name
-baseurl: 'https://example.com/' # Website URL
+baseurl: 'http://danielabban.netlify.app' # Website URL
 copyright: '' # Footer text, e.g. '© {year} Me'
 
 ############################
@@ -57,6 +57,9 @@ taxonomies:
   author: authors
 markup:
   _merge: deep
+  goldmark:
+    renderer:
+      unsafe: true
 related:
   threshold: 80
   includeNewer: true
@@ -68,3 +71,4 @@ related:
       weight: 70
 security:
   _merge: deep
+
