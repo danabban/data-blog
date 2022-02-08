@@ -39,11 +39,25 @@ experience:
   - title: Data Scientist
     company: DreamOval
     company_url: 'dreamoval.com'
-    company_logo: 
+    company_logo: org-gc
     location: Accra
-    date_start: '2017-03-13'
-    date_end: '2019-03-30'
-    Responsibility include: Ranking sales lead
+    date_start: '2017-03-09'
+    date_end: '2019-03-31'
+    description: |2-
+        Responsibilities include:
+        
+        * Built dashboards to visualize core business KPIs
+        * Collaborated with the innovations team to design and prototype viable AI products
+
+# - title: Data Scientist
+#    company: DreamOval
+#    company_url: 'dreamoval.com'
+#    company_logo: 
+#    location: Accra
+#    date_start: '2017-03-13'
+#    date_end: '2019-03-30'
+#    Description: Ranking sales lead
+    
 
 design:
   columns: '2'
