@@ -19,8 +19,9 @@ bio: My interests includes data visualization, data storytelling and artificial 
 # Interests to show in About widget
 interests:
 - Artificial Intelligence
-- Data Storytelling
-- Business Intelligence
+- Data Analysis
+- Visual Communication
+- Digital Advertising
 
 # Education to show in About widget
 education:
