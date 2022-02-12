@@ -53,7 +53,6 @@ item:
   title: Building AI Applications with Watson APIs
   url: ""
   
-  
 
 - certificate_url: https://www.coursera.org/account/accomplishments/verify/DJS4NMFK3ALW
   date_end: ""
