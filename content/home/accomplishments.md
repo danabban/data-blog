@@ -26,7 +26,7 @@ item:
 
 - certificate_url: https://www.coursera.org/account/accomplishments/verify/VLVLRBQKND7B
   date_end: ""
-  date_start: "2021-01-25"
+  date_start: "2020-06-11"
   description: ""
   organization: Coursera
   organization_url: https://www.coursera.org
@@ -54,6 +54,7 @@ item:
   url: ""
   
   
+
 - certificate_url: https://www.coursera.org/account/accomplishments/verify/DJS4NMFK3ALW
   date_end: ""
   date_start: "2017-10-08"
@@ -63,9 +64,8 @@ item:
   title: Neural Networks and Deep Learning
   url: ""
 
-  
 - certificate_url: https://www.aws.training/transcript/CompletionCertificateHtml?transcriptid=ziqMrvVVZEKd6gfYPHNpSw2
-  date_end: "2020-12-21"
+  date_end: ""
   date_start: "2018-06-12"
   description: "Built by AWS experts, this course helps you identify real-world use cases for solving business problems with Machine Learning"
   organization: Amazon
