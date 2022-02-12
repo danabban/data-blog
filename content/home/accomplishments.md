@@ -27,7 +27,7 @@ item:
 - certificate_url: https://www.coursera.org/account/accomplishments/verify/VLVLRBQKND7B
   date_end: ""
   date_start: "2020-06-11"
-  description: ""
+  description: "This course walks you through the best practices for data visualization, handling missing data, and hypothesis testing"
   organization: Coursera
   organization_url: https://www.coursera.org
   title: AI Workflow - Data Analysis and Hypothesis Testing
