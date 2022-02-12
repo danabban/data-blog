@@ -34,7 +34,7 @@ item:
 - certificate_url: https://www.coursera.org/account/accomplishments/professional-cert/N79PFXU6XS3E?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=pdf_header_button&utm_product=prof
   date_end: ""
   date_start: "2021-01-01"
-  description: IBM Applied AI.
+  description: " This Professional Certificate is designed to give you a firm understanding of AI technology, its applications, and its use cases".
   organization: Coursera
   organization_url: https://www.coursera.org
   title: IBM Applied AI
