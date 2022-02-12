@@ -42,10 +42,10 @@ item:
 - certificate_url: https://www.aws.training/transcript/CompletionCertificateHtml?transcriptid=ziqMrvVVZEKd6gfYPHNpSw2
   date_end: "2020-12-21"
   date_start: "2020-07-01"
-  description: ""
-  organization: DataCamp
-  organization_url: https://www.datacamp.com
-  title: 'Machine Learning For Business Challenges'
+  description: "Built by AWS experts, this course helps you identify real-world use cases for solving business problems with Machine Learning"
+  organization: Amazon
+  organization_url: https://www.aws.training
+  title: Machine Learning For Business Challenges
   url: ""
 
 design:
