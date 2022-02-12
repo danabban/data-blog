@@ -26,7 +26,7 @@ item:
 - certificate_url: https://www.coursera.org/account/accomplishments/verify/DJS4NMFK3ALW
   date_end: ""
   date_start: "2021-01-25"
-  description: ""
+  description: "This deep learning specialization provides a pathway for you to gain the knowledge and skills to apply machine learning to your work, level up your technical career, and take the definitive step in the world of AI."
   organization: Coursera
   organization_url: https://www.coursera.org
   title: Neural Networks and Deep Learning
