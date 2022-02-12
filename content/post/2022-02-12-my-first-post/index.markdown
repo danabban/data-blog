@@ -3,18 +3,18 @@ title: My first post
 author: 'dubdee'
 date: '2022-02-12'
 slug: my-first-post
-categories: [test]
-tags: [test]
+categories: [Test]
+tags: [Test]
 subtitle: ''
 summary: ''
 authors: [udubee]
 lastmod: '2022-02-12T12:16:50Z'
 featured: no
 image:
-  caption: ''
+  caption: 'my image'
   focal_point: ''
   preview_only: no
-projects: [test]
+projects: [Test]
 ---
 
 
