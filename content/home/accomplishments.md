@@ -44,7 +44,7 @@ item:
   date_start: "2020-07-01"
   description: "Built by AWS experts, this course helps you identify real-world use cases for solving business problems with Machine Learning"
   organization: Amazon
-  organization_url: https://www.aws.training
+  organization_url: https://www.amazon.com
   title: Machine Learning For Business Challenges
   url: ""
 
