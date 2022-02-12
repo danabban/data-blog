@@ -35,17 +35,17 @@ item:
   date_end: ""
   date_start: "2021-01-01"
   description: IBM Applied AI.
-  organization: IBM
+  organization: Coursera
   organization_url: https://www.coursera.org
   title: IBM Applied AI
-  url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
-- certificate_url: https://www.datacamp.com
+  url: ""
+- certificate_url: https://www.aws.training/transcript/CompletionCertificateHtml?transcriptid=ziqMrvVVZEKd6gfYPHNpSw2
   date_end: "2020-12-21"
   date_start: "2020-07-01"
   description: ""
   organization: DataCamp
   organization_url: https://www.datacamp.com
-  title: 'Object-Oriented Programming in R'
+  title: 'Machine Learning For Business Challenges'
   url: ""
 
 design:
