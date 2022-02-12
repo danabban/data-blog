@@ -23,6 +23,22 @@ date_format: Jan 2006
 #   Leave other parameters empty if not required.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 item:
+- certificate_url: https://www.coursera.org/account/accomplishments/verify/VLVLRBQKND7B
+  date_end: ""
+  date_start: "2021-01-25"
+  description: ""
+  organization: Coursera
+  organization_url: https://www.coursera.org
+  title: AI Workflow: Data Analysis and Hypothesis Testing
+  url: ""
+- certificate_url: https://www.coursera.org/account/accomplishments/verify/LHKPDW3QFBD3
+  date_end: ""
+  date_start: "2021-01-25"
+  description: ""
+  organization: Coursera
+  organization_url: https://www.coursera.org
+  title: AI Workflow: Business Priorities and Data Ingestion
+  url: ""
 - certificate_url: https://www.coursera.org/account/accomplishments/verify/DJS4NMFK3ALW
   date_end: ""
   date_start: "2021-01-25"
@@ -46,6 +62,14 @@ item:
   organization: Coursera
   organization_url: https://www.coursera.org
   title: IBM Applied AI
+  url: ""
+- certificate_url: https://www.coursera.org/account/accomplishments/verify/8KQT4NJFYE82
+  date_end: ""
+  date_start: "2021-01-01"
+  description: ""
+  organization: Coursera
+  organization_url: https://www.coursera.org
+  title: Introduction to Computer Vision and Image Processing
   url: ""
 - certificate_url: https://www.aws.training/transcript/CompletionCertificateHtml?transcriptid=ziqMrvVVZEKd6gfYPHNpSw2
   date_end: "2020-12-21"
