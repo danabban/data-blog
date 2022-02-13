@@ -6,7 +6,7 @@ title: Daniel Abban
 superuser: true
 
 # Role/position/tagline
-role: Data Analyst | Data Storyteller
+role: Data Analyst
 
 # Organizations/Affiliations to show in About widget
 #organizations:
@@ -68,4 +68,3 @@ highlight_name: true
 Daniel Abban is a data scientist with six years of industrial experience. His interests spans artificial intelligence, data visualization and data storytelling. He works in a cross functional team that develops computer vision applications, fraud detection systems, and product recommendation models.
 
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
