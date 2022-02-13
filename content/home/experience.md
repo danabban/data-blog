@@ -39,7 +39,7 @@ experience:
   - title: Data Scientist
     company: DreamOval
     company_url: 'dreamoval.com'
-    company_logo: dream
+    company_logo: dd
     location: Accra
     date_start: '2017-03-09'
     date_end: '2019-03-31'
