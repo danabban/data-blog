@@ -25,7 +25,7 @@ experience:
   - title: Manager
     company: Farboost
     company_url: ''
-    company_logo: org-gc
+    company_logo: farboost2
     location: Accra
     date_start: '2020-05-09'
     date_end: ''
@@ -39,7 +39,7 @@ experience:
   - title: Data Scientist
     company: DreamOval
     company_url: 'dreamoval.com'
-    company_logo: org-gc
+    company_logo: dream
     location: Accra
     date_start: '2017-03-09'
     date_end: '2019-03-31'
