@@ -18,7 +18,7 @@ bio: Making meaningful discoveries from data and promoting a data driven culture
 
 # Interests to show in About widget
 interests:
-- Data Visualization
+- Data Analytics
 - Visual Communication
 - Artificial Intelligence
 - Digital Advertising
