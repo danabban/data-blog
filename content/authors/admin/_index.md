@@ -14,7 +14,7 @@ role: Data Analyst
 #  url: https://www.stanford.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My interests includes data visualization, data storytelling and artificial intelligence.
+bio: Making meaningful discoveries from data and promoting a data driven culture in business.
 
 # Interests to show in About widget
 interests:
@@ -65,6 +65,8 @@ email: "danielabban"
 highlight_name: true
 ---
 
-Daniel Abban is a data scientist with six years of industrial experience. His interests spans artificial intelligence, data visualization and data storytelling. He works in a cross functional team that develops computer vision applications, fraud detection systems, and product recommendation models.
+Daniel Abban is an experienced data analyst with a bachelor of mathematics from Kwame Nkrumah University. He has spent the last 5 years helping institutions understand and visualize their data. First honing his data skills as a fresh graduate, he co-founded DataLamp Consult - to provide training on data tools and assist students with their thesis methodology.  
+
+His passion is to use data to solve real-world business challenges. He is a writer and speaker on the topic of data analytics, data visualization, and data science.  His blog is focused on promoting a data-driven culture in every organization. 
 
 
