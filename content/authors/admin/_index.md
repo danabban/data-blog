@@ -67,6 +67,8 @@ highlight_name: true
 
 Daniel Abban is an experienced data analyst with a bachelor of Mathematics from Kwame Nkrumah University. He has spent the last 5 years helping organizations understand and visualize their data. First honing his data skills as a fresh graduate, he co-founded DataLamp Consult - to provide training on data tools and assist students with their thesis methodology.  
 
-His passion is to use data to solve real-world business challenges. He is a writer and speaker on the topic of data analytics, data visualization, and data science.  His blog is focused on promoting a data-driven culture in business. 
+His passion is to use data to solve real-world business challenges. He is a writer and speaker on the topic of data analytics  
+
+Please feel free to contact me if you are interested in data analytics seminars or data analytics consulting
 
 

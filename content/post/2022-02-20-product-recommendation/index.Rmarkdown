@@ -1,10 +1,10 @@
 ---
-title: Association Rules For Effective Product Recommendation
+title: Frequent Itemset Analysis
 author: ''
 date: '2022-02-20'
 slug: product-recommendation
 categories: [Business]
-tags: [Business, DataScience]
+tags: [Business, Analytics]
 subtitle: ''
 summary: ''
 authors: [Daniel Abban]
@@ -22,22 +22,40 @@ On Amazon's product page, users are presented with related products, under the h
 
 Knowing what your customers tend to buy together can help with marketing efforts and cause you to optimize your store's layout for conversion.
 
-There are several algorithmic implementations for the phenomenon described above, one we would be exploring in this example is the **apriori** algorithm.
+There are several algorithmic implementations for the phenomenon described above, one we would be exploring in this example is the apriori algorithm.
 
 In simple language, the algorithm is used to find frequent patterns in a database, in the example we would be looking at, the algorithm would tell us what items customers frequently buy together by generating a set of rules called **Association Rules**.
 
 Observe the image below. Each ID shows the items bought in that transaction. You can see that **Diaper is bought with Beer in three transactions**.
+
+{Diapers} --> {Beer} is an example of an association rule
+
 ![rules](rules.png)
 
-Before we talk further on how the algorithm works, lets quickly take a glance at the data we would be using for this example:
+The Apriori algorithm requires two parameters from the user: support and confidence
 
-#### The Dataset
+* **Support** refers to the products’ frequency of occurrence. For example, if we set the support as 0.1, the algorithm calculates the transaction frequency for each product and discards all items that falls below 10 percent. 
 
-We would explore data from an online grocery store. The table below shows the first 5 observations and contains two variables:
+* **Confidence** is the proportion of transactions with item X, in which item Y also appears.
 
-1.**orderID**:  A unique ID that represents the all the items purchased for each transaction 
+Observe the example below to understand the algorithm's parameters:
 
-2.**Product**: A description of the actual items that were bought.
+> Diapers => Beer[Support=20%,confidence=60%]
+
+The above rule states:
+1. 20% transactions shows that Beer is bought with Diapers 
+2. 60% of customers who bought Beer also bought Diapers
+
+
+
+
+#### Example Dataset
+
+We would explore data from an online grocery store. The table below shows the first 5 observations with two variables:
+
+1.orderID:  A unique ID that represents the all the items purchased for each transaction 
+
+2.Product: A description of the actual items that were bought.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -49,6 +67,16 @@ library(knitr)
 transactions <- read_csv("data.csv", 
                          col_types = cols(order_id = col_character()))
 
+
+transactions.obj <- read.transactions(file = "data.csv", format = "single",
+ sep = ",",
+ cols = c("order_id", "product_id"),
+ rm.duplicates = TRUE,
+ quote = "", skip = 0,
+ encoding = "unknown",
+ header = TRUE)
+
+
 transactions %>%
   rename(OrderID = order_id, Product = product_id) %>%
   head(5) %>%
@@ -57,19 +85,8 @@ transactions %>%
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-transactions.obj <- read.transactions(file = "data.csv", format = "single",
- sep = ",",
- cols = c("order_id", "product_id"),
- rm.duplicates = TRUE,
- quote = "", skip = 0,
- encoding = "unknown",
- header = TRUE)
-```
 
-
-
-Which products are the most frequent in the data set, lets explore the top 5:
+Which products are the most frequent in the data set? lets explore:
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 transactions %>%
@@ -84,22 +101,9 @@ itemFrequencyPlot(transactions.obj, topN = 10)
 
 
 ```
-We can see from the table and chat above that Banana is the most frequently occurring product across 1,456 transactions. 
+We can see from the table and chat above that **Banana** is the most frequent occurring product, across 1,456 transactions. 
 
-Now, let's get back to how the **apriori** algorithm works
-
-The Apriori algorithm requires two parameters from the user, named, **support** and **confidence** from the user
-
-**Support** refers to the products’ frequency of occurrence. For example, if we set the support as 0.1, the algorithm calculates the transaction frequency for each product and discards all items that falls below 10 percent. 
-
-**Confidence** is the ratio of the number of transactions that include all items in the consequent. I explain the meaning of these definitions with the example below:
-
-> Red Vine Tomato => Banana[Support=20%,confidence=60%]
-
-###### The above rule states:
-1. 20% transactions shows that banana is bought with Red Vine Tomato 
-2. 60% of customers who bought banana also bought Red Vine Tomato
-
+***
 
 #### A Summary of How the Algorithm Works
 
@@ -108,3 +112,127 @@ The Apriori algorithm requires two parameters from the user, named, **support** 
 3. If support is less than minimum support set by the user, discards the item. Else, inserts it into the list of frequent itemset.
 4. Calculates the confidence for each non- empty subset.
 5. If confidence is less than minimum confidence set by the user, discard the subset. Else, insert it into the list of strong rules.
+
+
+
+#### Generate a list of frequent itemset
+
+The algorithm makes multiple passes into the database; **in the first pass**, the algorithm calculates the transaction frequency for each product and discard all those itemsets that fall below our support threshold. At this stage, we have **order 1 itemsets**. 
+
+
+**In the second pass**, the algorithm takes the itemset from the first pass, construct a new 2-products itemsets and calculates their transaction frequency. Once again, it discards the itemsets that fall below the given support threshold. At this stage, we have **order 2 itemsets**
+
+We stop when we reach a stage where we cannot create higher order itemsets. 
+
+Let us examine some frequent itemset generated from our data
+
+```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+# Interest Measures
+ support <- 0.01
+# Frequent item sets
+ parameters = list(
+ support = support,
+ minlen = 2, # Minimal number of items per item set
+ maxlen = 10, # Maximal number of items per item set
+ target = "frequent itemsets")
+ freq.items <- apriori(transactions.obj, parameter = parameters)
+```
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Let us examine our freq item sites
+ freq.items.df <- data.frame(item_set = labels(freq.items),
+                             support = freq.items@quality)
+
+head(freq.items.df) %>%
+  kable("html")
+```
+
+
+
+#### Find Rules
+
+Similar to support, the confidence threshold is also provided by the user. Only those rules whose confidence is greater than or equal to the user-provided confidence will be included by the algorithm.
+
+For the given confidence threshold, we can see the set of rules thrown out by the algorithm:
+
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+exclusion.items <- "Bag of Organic Bananas"
+get.rules <- function(transactions, support, confidence){
+ # Get Apriori rules for given support and confidence values
+ #
+ # Args:
+ # support: support parameter
+ # confidence: confidence parameter
+ #
+ # Reurns:
+ # rules object
+ parameters = list(
+ support = support,
+ confidence = confidence,
+ minlen = 2, # Minimal number of items per item set
+ maxlen = 10, # Maximal number of items per item set
+ target = "rules")
+ 
+ rules <- apriori(transactions, 
+                  parameter = parameters,
+                  appearance = list(none = exclusion.items))
+ 
+ return(rules)
+
+}
+
+rules <- get.rules( transaction = transactions.obj, support = 0.005, confidence = 0.4)
+
+rules.df <- data.frame(rules = labels(rules),
+                        rules@quality) %>%
+  select(c(1,2,3,5))
+
+```
+
+
+
+```{r echo=FALSE}
+
+
+rules.df %>%
+  kable("html")
+
+```
+
+
+We can observe that rule 6 states that {beer -> rice} has a support of 50% and a confidence of 67%. This means this rule was found in 50% of all transactions. The confidence that rice (LHS) is purchased given beer (RHS) is purchased (P(rice|beer)) is 67%. In other words, 67% of the times a customer buys beer, rice is bought as well.
+
+
+If you want stronger rules, you can increase the value of the **confidence** parameter 
+
+
+
+Lift: Often, we may have rules with high support and confidence but that are, as yet, of no use. This occurs when the item at the right-hand side of the rule has more probability of being selected alone than with the associated item.This is where lift comes to our rescue. For two products, A and B, lift measures how many times A and B occur together, more often than expected if they were statistically independent.
+
+Rules with lift values greater than one are considered to be more effective.
+
+
+
+
+
+#### Visualizing Association Rules
+
+
+The network graph below shows associations between selected items. Larger circles imply higher support, while red circles imply higher lift. Graphs only work well with very few rules, why we only use a subset of 10 rules from our data:
+
+Let's select 10 rules from subRules having the highest confidence.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+topRules <- head(rules, n = 5, by = "confidence")
+plot(topRules, method = "graph",  engine = "htmlwidget")
+
+```
+
+
+
+ 
+ 
