@@ -52,6 +52,7 @@ The above rule states:
 #### Example Dataset
 
 Our data is from an online grocery store. The table below shows the first 5 observations:
+You can download the data in my github repo [here!](https://github.com/danabban/freqItemAnalysis)
 
 1.orderID:  A unique ID that represents the all the items purchased for each transaction 
 
@@ -240,4 +241,5 @@ plot(topRules, method = "graph",  engine = "htmlwidget")
 
 You have learned about Association Rule Mining and and its applications in retail.This type of analysis can help marketing executives come up with a more strategic decision in retail environments.
 
+You can download the data and copy the script used for this analysis [here](https://github.com/danabban/freqItemAnalysis)
 
