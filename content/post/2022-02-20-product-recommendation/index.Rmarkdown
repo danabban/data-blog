@@ -222,9 +222,8 @@ If you want stronger rules, you can increase the value of the **confidence** par
 #### Visualizing Association Rules
 
 
-The network graph below shows associations between selected items. Larger circles imply higher support, while red circles imply higher lift. Graphs only work well with very few rules, why we only use a subset of 10 rules from our data:
+The network graph below shows associations between selected items. Larger circles imply higher support, while red circles imply higher lift. Graphs only work well with very few rules
 
-Let's select 10 rules from subRules having the highest confidence.
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
