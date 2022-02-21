@@ -158,7 +158,7 @@ head(freq.items.df) %>%
 <br />
 <br />
 
-#### Find Stong Rules
+#### Find Strong Rules
 
 Similar to support, the confidence threshold is also provided by the user. Only those rules whose confidence is greater than or equal to the user-provided confidence will be included by the algorithm.
 
