@@ -26,9 +26,9 @@ On Amazon’s product page, users are presented with related products, under the
 
 Knowing what your customers tend to buy together can help with marketing efforts and cause you to optimize your store’s layout for conversion.
 
-There are several algorithmic implementations for the phenomenon described above, one we would be exploring in this example is the apriori algorithm.
+There are several algorithmic implementations for the phenomenon described above, the one we would be exploring in this example is the apriori algorithm.
 
-In simple language, the algorithm is used to find frequent patterns in a database, in the example we would be looking at, the algorithm would tell us what items customers frequently buy together by generating a set of rules called **Association Rules**.
+In simple language, the algorithm is used to find frequent patterns in a database, in this example, the algorithm would tell us what items customers frequently buy together by generating a set of rules called **Association Rules**.
 
 Observe the image below. Each ID shows the items bought in that transaction. You can see that **Diaper is bought with Beer in three transactions**.
 
@@ -51,11 +51,10 @@ The above rule states:
 2. 60% of customers who bought Beer also bought Diapers
 
 <br />
-<br />
 
 #### Example Dataset
 
-We would explore data from an online grocery store. The table below shows the first 5 observations with two variables:
+Our data is from an online grocery store. The table below shows the first 5 observations:
 
 1.orderID: A unique ID that represents the all the items purchased for each transaction
 
@@ -188,7 +187,7 @@ We can see from the table and chat above that Banana is the most frequent occurr
 <br />
 <br />
 
-#### A Summary of How the Algorithm Works
+###### A Summary of How the Algorithm Works
 
 -   Finds frequent itemset in the database.
 -   Calculates the support for every item.
@@ -196,7 +195,6 @@ We can see from the table and chat above that Banana is the most frequent occurr
 -   Calculates the confidence for each non- empty subset.
 -   If confidence is less than minimum confidence set by the user, discard the subset. Else, insert it into the list of strong rules.
 
-<br />
 <br />
 
 ##### Generate a list of frequent itemset
@@ -300,190 +298,28 @@ support.count
 
 Similar to support, the confidence threshold is also provided by the user. Only those rules whose confidence is greater than or equal to the user-provided confidence will be included by the algorithm.
 
-For the given confidence threshold, we can view the set of rules thrown out by the algorithm:
+For any given confidence threshold, we can view the set of rules thrown out by the algorithm:
 
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-rules
-</th>
-<th style="text-align:right;">
-support
-</th>
-<th style="text-align:right;">
-confidence
-</th>
-<th style="text-align:right;">
-lift
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-{Total 2% Lowfat Greek Strained Yogurt With Blueberry} => {Total 2% with Strawberry Lowfat Greek Strained Yogurt}
-</td>
-<td style="text-align:right;">
-0.0054379
-</td>
-<td style="text-align:right;">
-0.5507246
-</td>
-<td style="text-align:right;">
-32.070531
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-{Non Fat Raspberry Yogurt} => {Icelandic Style Skyr Blueberry Non-fat Yogurt}
-</td>
-<td style="text-align:right;">
-0.0052948
-</td>
-<td style="text-align:right;">
-0.5606061
-</td>
-<td style="text-align:right;">
-51.546252
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-{Icelandic Style Skyr Blueberry Non-fat Yogurt} => {Non Fat Raspberry Yogurt}
-</td>
-<td style="text-align:right;">
-0.0052948
-</td>
-<td style="text-align:right;">
-0.4868421
-</td>
-<td style="text-align:right;">
-51.546252
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-{Total 0% Nonfat Greek Yogurt} => {Banana}
-</td>
-<td style="text-align:right;">
-0.0055810
-</td>
-<td style="text-align:right;">
-0.4148936
-</td>
-<td style="text-align:right;">
-1.991261
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-{Bartlett Pears} => {Banana}
-</td>
-<td style="text-align:right;">
-0.0078706
-</td>
-<td style="text-align:right;">
-0.4545455
-</td>
-<td style="text-align:right;">
-2.181568
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-{Sparkling Lemon Water} => {Sparkling Water Grapefruit}
-</td>
-<td style="text-align:right;">
-0.0067258
-</td>
-<td style="text-align:right;">
-0.4017094
-</td>
-<td style="text-align:right;">
-11.599774
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-{Broccoli Crown} => {Banana}
-</td>
-<td style="text-align:right;">
-0.0074413
-</td>
-<td style="text-align:right;">
-0.4031008
-</td>
-<td style="text-align:right;">
-1.934662
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-{Red Vine Tomato} => {Banana}
-</td>
-<td style="text-align:right;">
-0.0103034
-</td>
-<td style="text-align:right;">
-0.4067797
-</td>
-<td style="text-align:right;">
-1.952319
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-{Honeycrisp Apple} => {Banana}
-</td>
-<td style="text-align:right;">
-0.0161706
-</td>
-<td style="text-align:right;">
-0.4248120
-</td>
-<td style="text-align:right;">
-2.038864
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-{Organic Fuji Apple} => {Banana}
-</td>
-<td style="text-align:right;">
-0.0181740
-</td>
-<td style="text-align:right;">
-0.4110032
-</td>
-<td style="text-align:right;">
-1.972590
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-{Organic Avocado,Organic Strawberries} => {Banana}
-</td>
-<td style="text-align:right;">
-0.0061534
-</td>
-<td style="text-align:right;">
-0.4018692
-</td>
-<td style="text-align:right;">
-1.928751
-</td>
-</tr>
-</tbody>
-</table>
+    ##                                                    rules     support confidence
+    ## 1 {Lime Sparkling Water} => {Sparkling Water Grapefruit} 0.008872353  0.3690476
+    ## 2                          {Bunched Cilantro} => {Limes} 0.007727533  0.3461538
+    ## 3              {Organic Ginger Root} => {Organic Garlic} 0.008443045  0.3241758
+    ## 4        {Organic Blueberries} => {Organic Strawberries} 0.013022324  0.3063973
+    ## 5      {Organic D'Anjou Pears} => {Organic Strawberries} 0.007870635  0.3021978
+    ##        lift
+    ## 1 10.656631
+    ## 2  4.616265
+    ## 3  5.243844
+    ## 4  2.358044
+    ## 5  2.325725
 
-We can observe that rule 6 states that {beer -> rice} has a support of 50% and a confidence of 67%. This means this rule was found in 50% of all transactions. The confidence that rice (LHS) is purchased given beer (RHS) is purchased (P(rice\|beer)) is 67%. In other words, 67% of the times a customer buys beer, rice is bought as well.
+| x    |
+|:-----|
+| html |
+
+We can observe that rule 3 states that {Organic Blueberries} => {Organic Strawberries} has a support of 10% and a confidence of 30%. It means Organic Strawberries was found in 30% of all transactions. And 30% of customers who bought Organic Strawberries also bought Organic Blueberries.
 
 If you want stronger rules, you can increase the value of the **confidence** parameter
-
-Lift: Often, we may have rules with high support and confidence but that are, as yet, of no use. This occurs when the item at the right-hand side of the rule has more probability of being selected alone than with the associated item.This is where lift comes to our rescue. For two products, A and B, lift measures how many times A and B occur together, more often than expected if they were statistically independent.
-
-Rules with lift values greater than one are considered to be more effective.
 
 <br />
 <br />
@@ -495,4 +331,4 @@ The network graph below shows associations between selected items. Larger circle
 Let’s select 10 rules from subRules having the highest confidence.
 
 <div id="htmlwidget-1" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12],"label":["Banana","Bartlett Pears","Honeycrisp Apple","Icelandic Style Skyr Blueberry Non-fat Yogurt","Non Fat Raspberry Yogurt","Total 2% Lowfat Greek Strained Yogurt With Blueberry","Total 2% with Strawberry Lowfat Greek Strained Yogurt","rule 1","rule 2","rule 3","rule 4","rule 5"],"group":[1,1,1,1,1,1,1,2,2,2,2,2],"value":[1,1,1,1,1,1,1,1,2.30263157894737,1,24.4473684210526,100],"color":["#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#EE1B1B","#EE7E7E","#EE1B1B","#EEDBDB","#EEDCDC"],"title":["Banana","Bartlett Pears","Honeycrisp Apple","Icelandic Style Skyr Blueberry Non-fat Yogurt","Non Fat Raspberry Yogurt","Total 2% Lowfat Greek Strained Yogurt With Blueberry","Total 2% with Strawberry Lowfat Greek Strained Yogurt","<B>[1]<\/B><BR><B>{Non Fat Raspberry Yogurt}<\/B><BR>&nbsp;&nbsp; => <B>{Icelandic Style Skyr Blueberry Non-fat Yogurt}<\/B><BR><BR>support = 0.00529<BR>confidence = 0.561<BR>coverage = 0.00944<BR>lift = 51.5<BR>count = 37<BR>order = 2<BR>id = 1","<B>[2]<\/B><BR><B>{Total 2% Lowfat Greek Strained Yogurt With Blueberry}<\/B><BR>&nbsp;&nbsp; => <B>{Total 2% with Strawberry Lowfat Greek Strained Yogurt}<\/B><BR><BR>support = 0.00544<BR>confidence = 0.551<BR>coverage = 0.00987<BR>lift = 32.1<BR>count = 38<BR>order = 2<BR>id = 2","<B>[3]<\/B><BR><B>{Icelandic Style Skyr Blueberry Non-fat Yogurt}<\/B><BR>&nbsp;&nbsp; => <B>{Non Fat Raspberry Yogurt}<\/B><BR><BR>support = 0.00529<BR>confidence = 0.487<BR>coverage = 0.0109<BR>lift = 51.5<BR>count = 37<BR>order = 2<BR>id = 3","<B>[4]<\/B><BR><B>{Bartlett Pears}<\/B><BR>&nbsp;&nbsp; => <B>{Banana}<\/B><BR><BR>support = 0.00787<BR>confidence = 0.455<BR>coverage = 0.0173<BR>lift = 2.18<BR>count = 55<BR>order = 2<BR>id = 4","<B>[5]<\/B><BR><B>{Honeycrisp Apple}<\/B><BR>&nbsp;&nbsp; => <B>{Banana}<\/B><BR><BR>support = 0.0162<BR>confidence = 0.425<BR>coverage = 0.0381<BR>lift = 2.04<BR>count = 113<BR>order = 2<BR>id = 5"],"shape":["box","box","box","box","box","box","box","circle","circle","circle","circle","circle"],"x":[-0.235963934775789,-1,0.637266405757074,-0.788225314027787,-0.127522622634408,0.751566506215545,1,-0.452266176881012,0.882767744797075,-0.456054869271486,-0.65994270795506,0.215833635356831],"y":[0.984108723854051,0.514136524605082,0.925518394130748,-0.655034768691097,-0.703033295044328,-0.770390939426168,0.100893600951169,-0.356565246621575,-0.335424211767626,-1,0.798087779960343,1]},"edges":{"from":[5,6,4,2,3,8,9,10,11,12],"to":[8,9,10,11,12,4,7,5,1,1],"arrows":["to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":false},"physics":{"stabilization":false},"interaction":{"hover":true,"zoomSpeed":1}},"groups":["1","2"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","igraphlayout":{"type":"square"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","highlight":{"enabled":true,"hoverNearest":true,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14],"label":["Bunched Cilantro","Lime Sparkling Water","Limes","Organic Blueberries","Organic D'Anjou Pears","Organic Garlic","Organic Ginger Root","Organic Strawberries","Sparkling Water Grapefruit","rule 1","rule 2","rule 3","rule 4","rule 5"],"group":[1,1,1,1,1,1,1,1,1,2,2,2,2,2],"value":[1,1,1,1,1,1,1,1,1,22.4054054054054,1,14.3783783783784,100,3.67567567567568],"color":["#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#EE1B1B","#EEB7B7","#EEACAC","#EEDBDB","#EEDCDC"],"title":["Bunched Cilantro","Lime Sparkling Water","Limes","Organic Blueberries","Organic D'Anjou Pears","Organic Garlic","Organic Ginger Root","Organic Strawberries","Sparkling Water Grapefruit","<B>[1]<\/B><BR><B>{Lime Sparkling Water}<\/B><BR>&nbsp;&nbsp; => <B>{Sparkling Water Grapefruit}<\/B><BR><BR>support = 0.00887<BR>confidence = 0.369<BR>coverage = 0.024<BR>lift = 10.7<BR>count = 62<BR>order = 2<BR>id = 1","<B>[2]<\/B><BR><B>{Bunched Cilantro}<\/B><BR>&nbsp;&nbsp; => <B>{Limes}<\/B><BR><BR>support = 0.00773<BR>confidence = 0.346<BR>coverage = 0.0223<BR>lift = 4.62<BR>count = 54<BR>order = 2<BR>id = 2","<B>[3]<\/B><BR><B>{Organic Ginger Root}<\/B><BR>&nbsp;&nbsp; => <B>{Organic Garlic}<\/B><BR><BR>support = 0.00844<BR>confidence = 0.324<BR>coverage = 0.026<BR>lift = 5.24<BR>count = 59<BR>order = 2<BR>id = 3","<B>[4]<\/B><BR><B>{Organic Blueberries}<\/B><BR>&nbsp;&nbsp; => <B>{Organic Strawberries}<\/B><BR><BR>support = 0.013<BR>confidence = 0.306<BR>coverage = 0.0425<BR>lift = 2.36<BR>count = 91<BR>order = 2<BR>id = 4","<B>[5]<\/B><BR><B>{Organic D'Anjou Pears}<\/B><BR>&nbsp;&nbsp; => <B>{Organic Strawberries}<\/B><BR><BR>support = 0.00787<BR>confidence = 0.302<BR>coverage = 0.026<BR>lift = 2.33<BR>count = 55<BR>order = 2<BR>id = 5"],"shape":["box","box","box","box","box","box","box","box","box","circle","circle","circle","circle","circle"],"x":[0.366582742704272,0.529160735803859,-0.423089505316258,-0.891712558653752,-0.0790355457292092,1,0.945317015838843,-0.888431774873995,-0.207738905927071,0.158132722713709,-0.0254356804772664,0.961490733459176,-1,-0.47096365987375],"y":[0.938624434521856,-0.857756933761531,1,-0.59668052458719,0.100902476662948,-0.322422311904585,0.411305601667187,0.16707705219567,-1,-0.914706455107659,0.996710493489502,0.0433176290017545,-0.222984435139953,0.220490260291534]},"edges":{"from":[2,1,7,4,5,10,11,12,13,14],"to":[10,11,12,13,14,9,3,6,8,8],"arrows":["to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":false},"physics":{"stabilization":false},"interaction":{"hover":true,"zoomSpeed":1}},"groups":["1","2"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","igraphlayout":{"type":"square"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","highlight":{"enabled":true,"hoverNearest":true,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
