@@ -50,6 +50,9 @@ The above rule states:
 1. 20% transactions shows that Beer is bought with Diapers
 2. 60% of customers who bought Beer also bought Diapers
 
+<br />
+<br />
+
 #### Example Dataset
 
 We would explore data from an online grocery store. The table below shows the first 5 observations with two variables:
@@ -182,7 +185,8 @@ Organic Avocado
 
 We can see from the table and chat above that Banana is the most frequent occurring product, across 1,456 transactions.
 
-------------------------------------------------------------------------
+<br />
+<br />
 
 #### A Summary of How the Algorithm Works
 
@@ -191,6 +195,9 @@ We can see from the table and chat above that Banana is the most frequent occurr
 -   If support is less than minimum support set by the user, discards the item. Else, inserts it into the list of frequent itemset.
 -   Calculates the confidence for each non- empty subset.
 -   If confidence is less than minimum confidence set by the user, discard the subset. Else, insert it into the list of strong rules.
+
+<br />
+<br />
 
 ##### Generate a list of frequent itemset
 
@@ -293,7 +300,7 @@ support.count
 
 Similar to support, the confidence threshold is also provided by the user. Only those rules whose confidence is greater than or equal to the user-provided confidence will be included by the algorithm.
 
-For the given confidence threshold, we can see the set of rules thrown out by the algorithm:
+For the given confidence threshold, we can view the set of rules thrown out by the algorithm:
 
 <table>
 <thead>
@@ -478,6 +485,9 @@ Lift: Often, we may have rules with high support and confidence but that are, a
 
 Rules with lift values greater than one are considered to be more effective.
 
+<br />
+<br />
+
 #### Visualizing Association Rules
 
 The network graph below shows associations between selected items. Larger circles imply higher support, while red circles imply higher lift. Graphs only work well with very few rules, why we only use a subset of 10 rules from our data:
@@ -485,4 +495,4 @@ The network graph below shows associations between selected items. Larger circle
 Let’s select 10 rules from subRules having the highest confidence.
 
 <div id="htmlwidget-1" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12],"label":["Banana","Bartlett Pears","Honeycrisp Apple","Icelandic Style Skyr Blueberry Non-fat Yogurt","Non Fat Raspberry Yogurt","Total 2% Lowfat Greek Strained Yogurt With Blueberry","Total 2% with Strawberry Lowfat Greek Strained Yogurt","rule 1","rule 2","rule 3","rule 4","rule 5"],"group":[1,1,1,1,1,1,1,2,2,2,2,2],"value":[1,1,1,1,1,1,1,1,2.30263157894737,1,24.4473684210526,100],"color":["#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#EE1B1B","#EE7E7E","#EE1B1B","#EEDBDB","#EEDCDC"],"title":["Banana","Bartlett Pears","Honeycrisp Apple","Icelandic Style Skyr Blueberry Non-fat Yogurt","Non Fat Raspberry Yogurt","Total 2% Lowfat Greek Strained Yogurt With Blueberry","Total 2% with Strawberry Lowfat Greek Strained Yogurt","<B>[1]<\/B><BR><B>{Non Fat Raspberry Yogurt}<\/B><BR>&nbsp;&nbsp; => <B>{Icelandic Style Skyr Blueberry Non-fat Yogurt}<\/B><BR><BR>support = 0.00529<BR>confidence = 0.561<BR>coverage = 0.00944<BR>lift = 51.5<BR>count = 37<BR>order = 2<BR>id = 1","<B>[2]<\/B><BR><B>{Total 2% Lowfat Greek Strained Yogurt With Blueberry}<\/B><BR>&nbsp;&nbsp; => <B>{Total 2% with Strawberry Lowfat Greek Strained Yogurt}<\/B><BR><BR>support = 0.00544<BR>confidence = 0.551<BR>coverage = 0.00987<BR>lift = 32.1<BR>count = 38<BR>order = 2<BR>id = 2","<B>[3]<\/B><BR><B>{Icelandic Style Skyr Blueberry Non-fat Yogurt}<\/B><BR>&nbsp;&nbsp; => <B>{Non Fat Raspberry Yogurt}<\/B><BR><BR>support = 0.00529<BR>confidence = 0.487<BR>coverage = 0.0109<BR>lift = 51.5<BR>count = 37<BR>order = 2<BR>id = 3","<B>[4]<\/B><BR><B>{Bartlett Pears}<\/B><BR>&nbsp;&nbsp; => <B>{Banana}<\/B><BR><BR>support = 0.00787<BR>confidence = 0.455<BR>coverage = 0.0173<BR>lift = 2.18<BR>count = 55<BR>order = 2<BR>id = 4","<B>[5]<\/B><BR><B>{Honeycrisp Apple}<\/B><BR>&nbsp;&nbsp; => <B>{Banana}<\/B><BR><BR>support = 0.0162<BR>confidence = 0.425<BR>coverage = 0.0381<BR>lift = 2.04<BR>count = 113<BR>order = 2<BR>id = 5"],"shape":["box","box","box","box","box","box","box","circle","circle","circle","circle","circle"],"x":[-0.259587491745385,0.602389780325965,-1,-0.471545849764115,-0.308475978564221,1,0.798310608951105,-0.713458889476462,0.903538230866702,-0.0795933191587074,0.186688331727025,-0.669691237809239],"y":[0.941780701351705,0.937337141632178,0.437173293449373,-1,-0.39771387140917,0.141827455652186,-0.73534342396334,-0.59669765764208,-0.296856463052285,-0.8181699881202,1,0.735857766712999]},"edges":{"from":[5,6,4,2,3,8,9,10,11,12],"to":[8,9,10,11,12,4,7,5,1,1],"arrows":["to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":false},"physics":{"stabilization":false},"interaction":{"hover":true,"zoomSpeed":1}},"groups":["1","2"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","igraphlayout":{"type":"square"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","highlight":{"enabled":true,"hoverNearest":true,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12],"label":["Banana","Bartlett Pears","Honeycrisp Apple","Icelandic Style Skyr Blueberry Non-fat Yogurt","Non Fat Raspberry Yogurt","Total 2% Lowfat Greek Strained Yogurt With Blueberry","Total 2% with Strawberry Lowfat Greek Strained Yogurt","rule 1","rule 2","rule 3","rule 4","rule 5"],"group":[1,1,1,1,1,1,1,2,2,2,2,2],"value":[1,1,1,1,1,1,1,1,2.30263157894737,1,24.4473684210526,100],"color":["#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#EE1B1B","#EE7E7E","#EE1B1B","#EEDBDB","#EEDCDC"],"title":["Banana","Bartlett Pears","Honeycrisp Apple","Icelandic Style Skyr Blueberry Non-fat Yogurt","Non Fat Raspberry Yogurt","Total 2% Lowfat Greek Strained Yogurt With Blueberry","Total 2% with Strawberry Lowfat Greek Strained Yogurt","<B>[1]<\/B><BR><B>{Non Fat Raspberry Yogurt}<\/B><BR>&nbsp;&nbsp; => <B>{Icelandic Style Skyr Blueberry Non-fat Yogurt}<\/B><BR><BR>support = 0.00529<BR>confidence = 0.561<BR>coverage = 0.00944<BR>lift = 51.5<BR>count = 37<BR>order = 2<BR>id = 1","<B>[2]<\/B><BR><B>{Total 2% Lowfat Greek Strained Yogurt With Blueberry}<\/B><BR>&nbsp;&nbsp; => <B>{Total 2% with Strawberry Lowfat Greek Strained Yogurt}<\/B><BR><BR>support = 0.00544<BR>confidence = 0.551<BR>coverage = 0.00987<BR>lift = 32.1<BR>count = 38<BR>order = 2<BR>id = 2","<B>[3]<\/B><BR><B>{Icelandic Style Skyr Blueberry Non-fat Yogurt}<\/B><BR>&nbsp;&nbsp; => <B>{Non Fat Raspberry Yogurt}<\/B><BR><BR>support = 0.00529<BR>confidence = 0.487<BR>coverage = 0.0109<BR>lift = 51.5<BR>count = 37<BR>order = 2<BR>id = 3","<B>[4]<\/B><BR><B>{Bartlett Pears}<\/B><BR>&nbsp;&nbsp; => <B>{Banana}<\/B><BR><BR>support = 0.00787<BR>confidence = 0.455<BR>coverage = 0.0173<BR>lift = 2.18<BR>count = 55<BR>order = 2<BR>id = 4","<B>[5]<\/B><BR><B>{Honeycrisp Apple}<\/B><BR>&nbsp;&nbsp; => <B>{Banana}<\/B><BR><BR>support = 0.0162<BR>confidence = 0.425<BR>coverage = 0.0381<BR>lift = 2.04<BR>count = 113<BR>order = 2<BR>id = 5"],"shape":["box","box","box","box","box","box","box","circle","circle","circle","circle","circle"],"x":[-0.235963934775789,-1,0.637266405757074,-0.788225314027787,-0.127522622634408,0.751566506215545,1,-0.452266176881012,0.882767744797075,-0.456054869271486,-0.65994270795506,0.215833635356831],"y":[0.984108723854051,0.514136524605082,0.925518394130748,-0.655034768691097,-0.703033295044328,-0.770390939426168,0.100893600951169,-0.356565246621575,-0.335424211767626,-1,0.798087779960343,1]},"edges":{"from":[5,6,4,2,3,8,9,10,11,12],"to":[8,9,10,11,12,4,7,5,1,1],"arrows":["to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":false},"physics":{"stabilization":false},"interaction":{"hover":true,"zoomSpeed":1}},"groups":["1","2"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","igraphlayout":{"type":"square"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","highlight":{"enabled":true,"hoverNearest":true,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>

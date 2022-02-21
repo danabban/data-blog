@@ -47,7 +47,8 @@ The above rule states:
 2. 60% of customers who bought Beer also bought Diapers
 
 
-
+<br />
+<br />
 
 #### Example Dataset
 
@@ -105,7 +106,8 @@ itemFrequencyPlot(transactions.obj, topN = 10)
 We can see from the table and chat above that Banana is the most frequent occurring product, across 1,456 transactions. 
 
 
-***
+<br />
+<br />
 
 #### A Summary of How the Algorithm Works
 
@@ -116,6 +118,8 @@ We can see from the table and chat above that Banana is the most frequent occurr
 * If confidence is less than minimum confidence set by the user, discard the subset. Else, insert it into the list of strong rules.
 
 
+<br />
+<br />
 
 ##### Generate a list of frequent itemset
 
@@ -158,7 +162,7 @@ head(freq.items.df) %>%
 
 Similar to support, the confidence threshold is also provided by the user. Only those rules whose confidence is greater than or equal to the user-provided confidence will be included by the algorithm.
 
-For the given confidence threshold, we can see the set of rules thrown out by the algorithm:
+For the given confidence threshold, we can view the set of rules thrown out by the algorithm:
 
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
@@ -218,7 +222,8 @@ Lift: Often, we may have rules with high support and confidence but that are, a
 Rules with lift values greater than one are considered to be more effective.
 
 
-
+<br />
+<br />
 
 
 #### Visualizing Association Rules
@@ -236,9 +241,3 @@ plot(topRules, method = "graph",  engine = "htmlwidget")
 ```
 
 
-```{r}
-
-```
-
- 
- 
