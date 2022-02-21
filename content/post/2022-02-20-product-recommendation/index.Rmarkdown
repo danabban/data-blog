@@ -82,6 +82,7 @@ transactions %>%
   head(5) %>%
   kable("html")
 
+
 ```
 
 
@@ -209,7 +210,7 @@ rules.df %>%
 ```
 
 
-We can observe that rule 3 states that {Organic Blueberries} => {Organic Strawberries} has a support of 10% and a confidence of 30%. It means Organic Strawberries was found in 30% of all transactions. And 30% of customers who bought Organic Strawberries also bought Organic Blueberries. 
+We can observe that rule 4 states that {Organic Blueberries} => {Organic Strawberries} has a support of 10% and a confidence of 30%. It means Organic Strawberries was found in 30% of all transactions. And 30% of customers who bought Organic Strawberries also bought Organic Blueberries. 
 
 
 If you want stronger rules, you can increase the value of the **confidence** parameter 
@@ -231,5 +232,10 @@ topRules <- head(rules, n = 5, by = "confidence")
 plot(topRules, method = "graph",  engine = "htmlwidget")
 
 ```
+
+<br />
+#### Conclusion
+
+You have learned about Association Rule Mining and and its applications in retail.This type of analysis can help marketing executives come up with a more strategic decision in retail environments.
 
 
