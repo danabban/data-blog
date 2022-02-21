@@ -199,11 +199,11 @@ rules.df <- data.frame(rules = labels(rules),
 
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 
 rules.df %>%
-  arrange(desc(confidence))
+  arrange(desc(confidence)) %>%
   kable("html")
 
 ```

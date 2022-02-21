@@ -300,22 +300,96 @@ Similar to support, the confidence threshold is also provided by the user. Only 
 
 For any given confidence threshold, we can view the set of rules thrown out by the algorithm:
 
-    ##                                                    rules     support confidence
-    ## 1 {Lime Sparkling Water} => {Sparkling Water Grapefruit} 0.008872353  0.3690476
-    ## 2                          {Bunched Cilantro} => {Limes} 0.007727533  0.3461538
-    ## 3              {Organic Ginger Root} => {Organic Garlic} 0.008443045  0.3241758
-    ## 4        {Organic Blueberries} => {Organic Strawberries} 0.013022324  0.3063973
-    ## 5      {Organic D'Anjou Pears} => {Organic Strawberries} 0.007870635  0.3021978
-    ##        lift
-    ## 1 10.656631
-    ## 2  4.616265
-    ## 3  5.243844
-    ## 4  2.358044
-    ## 5  2.325725
-
-| x    |
-|:-----|
-| html |
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+rules
+</th>
+<th style="text-align:right;">
+support
+</th>
+<th style="text-align:right;">
+confidence
+</th>
+<th style="text-align:right;">
+lift
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+{Lime Sparkling Water} => {Sparkling Water Grapefruit}
+</td>
+<td style="text-align:right;">
+0.0088724
+</td>
+<td style="text-align:right;">
+0.3690476
+</td>
+<td style="text-align:right;">
+10.656631
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+{Bunched Cilantro} => {Limes}
+</td>
+<td style="text-align:right;">
+0.0077275
+</td>
+<td style="text-align:right;">
+0.3461538
+</td>
+<td style="text-align:right;">
+4.616265
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+{Organic Ginger Root} => {Organic Garlic}
+</td>
+<td style="text-align:right;">
+0.0084430
+</td>
+<td style="text-align:right;">
+0.3241758
+</td>
+<td style="text-align:right;">
+5.243844
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+{Organic Blueberries} => {Organic Strawberries}
+</td>
+<td style="text-align:right;">
+0.0130223
+</td>
+<td style="text-align:right;">
+0.3063973
+</td>
+<td style="text-align:right;">
+2.358045
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+{Organic D’Anjou Pears} => {Organic Strawberries}
+</td>
+<td style="text-align:right;">
+0.0078706
+</td>
+<td style="text-align:right;">
+0.3021978
+</td>
+<td style="text-align:right;">
+2.325725
+</td>
+</tr>
+</tbody>
+</table>
 
 We can observe that rule 3 states that {Organic Blueberries} => {Organic Strawberries} has a support of 10% and a confidence of 30%. It means Organic Strawberries was found in 30% of all transactions. And 30% of customers who bought Organic Strawberries also bought Organic Blueberries.
 
@@ -331,4 +405,4 @@ The network graph below shows associations between selected items. Larger circle
 Let’s select 10 rules from subRules having the highest confidence.
 
 <div id="htmlwidget-1" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14],"label":["Bunched Cilantro","Lime Sparkling Water","Limes","Organic Blueberries","Organic D'Anjou Pears","Organic Garlic","Organic Ginger Root","Organic Strawberries","Sparkling Water Grapefruit","rule 1","rule 2","rule 3","rule 4","rule 5"],"group":[1,1,1,1,1,1,1,1,1,2,2,2,2,2],"value":[1,1,1,1,1,1,1,1,1,22.4054054054054,1,14.3783783783784,100,3.67567567567568],"color":["#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#EE1B1B","#EEB7B7","#EEACAC","#EEDBDB","#EEDCDC"],"title":["Bunched Cilantro","Lime Sparkling Water","Limes","Organic Blueberries","Organic D'Anjou Pears","Organic Garlic","Organic Ginger Root","Organic Strawberries","Sparkling Water Grapefruit","<B>[1]<\/B><BR><B>{Lime Sparkling Water}<\/B><BR>&nbsp;&nbsp; => <B>{Sparkling Water Grapefruit}<\/B><BR><BR>support = 0.00887<BR>confidence = 0.369<BR>coverage = 0.024<BR>lift = 10.7<BR>count = 62<BR>order = 2<BR>id = 1","<B>[2]<\/B><BR><B>{Bunched Cilantro}<\/B><BR>&nbsp;&nbsp; => <B>{Limes}<\/B><BR><BR>support = 0.00773<BR>confidence = 0.346<BR>coverage = 0.0223<BR>lift = 4.62<BR>count = 54<BR>order = 2<BR>id = 2","<B>[3]<\/B><BR><B>{Organic Ginger Root}<\/B><BR>&nbsp;&nbsp; => <B>{Organic Garlic}<\/B><BR><BR>support = 0.00844<BR>confidence = 0.324<BR>coverage = 0.026<BR>lift = 5.24<BR>count = 59<BR>order = 2<BR>id = 3","<B>[4]<\/B><BR><B>{Organic Blueberries}<\/B><BR>&nbsp;&nbsp; => <B>{Organic Strawberries}<\/B><BR><BR>support = 0.013<BR>confidence = 0.306<BR>coverage = 0.0425<BR>lift = 2.36<BR>count = 91<BR>order = 2<BR>id = 4","<B>[5]<\/B><BR><B>{Organic D'Anjou Pears}<\/B><BR>&nbsp;&nbsp; => <B>{Organic Strawberries}<\/B><BR><BR>support = 0.00787<BR>confidence = 0.302<BR>coverage = 0.026<BR>lift = 2.33<BR>count = 55<BR>order = 2<BR>id = 5"],"shape":["box","box","box","box","box","box","box","box","box","circle","circle","circle","circle","circle"],"x":[0.366582742704272,0.529160735803859,-0.423089505316258,-0.891712558653752,-0.0790355457292092,1,0.945317015838843,-0.888431774873995,-0.207738905927071,0.158132722713709,-0.0254356804772664,0.961490733459176,-1,-0.47096365987375],"y":[0.938624434521856,-0.857756933761531,1,-0.59668052458719,0.100902476662948,-0.322422311904585,0.411305601667187,0.16707705219567,-1,-0.914706455107659,0.996710493489502,0.0433176290017545,-0.222984435139953,0.220490260291534]},"edges":{"from":[2,1,7,4,5,10,11,12,13,14],"to":[10,11,12,13,14,9,3,6,8,8],"arrows":["to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":false},"physics":{"stabilization":false},"interaction":{"hover":true,"zoomSpeed":1}},"groups":["1","2"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","igraphlayout":{"type":"square"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","highlight":{"enabled":true,"hoverNearest":true,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14],"label":["Bunched Cilantro","Lime Sparkling Water","Limes","Organic Blueberries","Organic D'Anjou Pears","Organic Garlic","Organic Ginger Root","Organic Strawberries","Sparkling Water Grapefruit","rule 1","rule 2","rule 3","rule 4","rule 5"],"group":[1,1,1,1,1,1,1,1,1,2,2,2,2,2],"value":[1,1,1,1,1,1,1,1,1,22.4054054054054,1,14.3783783783784,100,3.67567567567568],"color":["#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#CBD2FC","#EE1B1B","#EEB7B7","#EEACAC","#EEDBDB","#EEDCDC"],"title":["Bunched Cilantro","Lime Sparkling Water","Limes","Organic Blueberries","Organic D'Anjou Pears","Organic Garlic","Organic Ginger Root","Organic Strawberries","Sparkling Water Grapefruit","<B>[1]<\/B><BR><B>{Lime Sparkling Water}<\/B><BR>&nbsp;&nbsp; => <B>{Sparkling Water Grapefruit}<\/B><BR><BR>support = 0.00887<BR>confidence = 0.369<BR>coverage = 0.024<BR>lift = 10.7<BR>count = 62<BR>order = 2<BR>id = 1","<B>[2]<\/B><BR><B>{Bunched Cilantro}<\/B><BR>&nbsp;&nbsp; => <B>{Limes}<\/B><BR><BR>support = 0.00773<BR>confidence = 0.346<BR>coverage = 0.0223<BR>lift = 4.62<BR>count = 54<BR>order = 2<BR>id = 2","<B>[3]<\/B><BR><B>{Organic Ginger Root}<\/B><BR>&nbsp;&nbsp; => <B>{Organic Garlic}<\/B><BR><BR>support = 0.00844<BR>confidence = 0.324<BR>coverage = 0.026<BR>lift = 5.24<BR>count = 59<BR>order = 2<BR>id = 3","<B>[4]<\/B><BR><B>{Organic Blueberries}<\/B><BR>&nbsp;&nbsp; => <B>{Organic Strawberries}<\/B><BR><BR>support = 0.013<BR>confidence = 0.306<BR>coverage = 0.0425<BR>lift = 2.36<BR>count = 91<BR>order = 2<BR>id = 4","<B>[5]<\/B><BR><B>{Organic D'Anjou Pears}<\/B><BR>&nbsp;&nbsp; => <B>{Organic Strawberries}<\/B><BR><BR>support = 0.00787<BR>confidence = 0.302<BR>coverage = 0.026<BR>lift = 2.33<BR>count = 55<BR>order = 2<BR>id = 5"],"shape":["box","box","box","box","box","box","box","box","box","circle","circle","circle","circle","circle"],"x":[0.830026913605052,0.0774354011635647,1,-0.671234282494807,-0.988576323104123,0.713792906051234,0.0462689432896426,-0.923181932783382,-0.0715665606705238,-0.146664157909618,0.880205261580453,0.33524483858096,-0.843426240282756,-1],"y":[-0.52221209566382,-1,0.142071611054141,0.856238176027008,-0.518402622580279,0.716995576680061,1,0.195399210439814,-0.380990702605362,-0.733955950394586,-0.179717572883106,0.775680132000723,0.550410440976661,-0.16507370480895]},"edges":{"from":[2,1,7,4,5,10,11,12,13,14],"to":[10,11,12,13,14,9,3,6,8,8],"arrows":["to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":false},"physics":{"stabilization":false},"interaction":{"hover":true,"zoomSpeed":1}},"groups":["1","2"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","igraphlayout":{"type":"square"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","highlight":{"enabled":true,"hoverNearest":true,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
