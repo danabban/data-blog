@@ -234,7 +234,9 @@ plot(topRules, method = "graph",  engine = "htmlwidget")
 ```
 
 <br />
-#### Conclusion
+
+
+##### Conclusion
 
 You have learned about Association Rule Mining and and its applications in retail.This type of analysis can help marketing executives come up with a more strategic decision in retail environments.
 
