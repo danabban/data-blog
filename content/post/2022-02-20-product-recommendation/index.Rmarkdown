@@ -101,21 +101,23 @@ itemFrequencyPlot(transactions.obj, topN = 10)
 
 
 ```
-We can see from the table and chat above that **Banana** is the most frequent occurring product, across 1,456 transactions. 
+
+We can see from the table and chat above that Banana is the most frequent occurring product, across 1,456 transactions. 
+
 
 ***
 
 #### A Summary of How the Algorithm Works
 
-1. Finds frequent itemset in the database.
-2. Calculates the support for every item.
-3. If support is less than minimum support set by the user, discards the item. Else, inserts it into the list of frequent itemset.
-4. Calculates the confidence for each non- empty subset.
-5. If confidence is less than minimum confidence set by the user, discard the subset. Else, insert it into the list of strong rules.
+* Finds frequent itemset in the database.
+* Calculates the support for every item.
+* If support is less than minimum support set by the user, discards the item. Else, inserts it into the list of frequent itemset.
+* Calculates the confidence for each non- empty subset.
+* If confidence is less than minimum confidence set by the user, discard the subset. Else, insert it into the list of strong rules.
 
 
 
-#### Generate a list of frequent itemset
+##### Generate a list of frequent itemset
 
 The algorithm makes multiple passes into the database; **in the first pass**, the algorithm calculates the transaction frequency for each product and discard all those itemsets that fall below our support threshold. At this stage, we have **order 1 itemsets**. 
 
@@ -149,9 +151,10 @@ head(freq.items.df) %>%
   kable("html")
 ```
 
+<br />
+<br />
 
-
-#### Find Rules
+#### Find Stong Rules
 
 Similar to support, the confidence threshold is also provided by the user. Only those rules whose confidence is greater than or equal to the user-provided confidence will be included by the algorithm.
 
@@ -233,6 +236,9 @@ plot(topRules, method = "graph",  engine = "htmlwidget")
 ```
 
 
+```{r}
+
+```
 
  
  
