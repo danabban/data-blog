@@ -215,29 +215,26 @@ To wrap up, lets visualize the geographic distribution of the victims
 
 ```{r message=FALSE, warning=FALSE}
 
- #Construct a color palette (scale) based on the `race` column
 palette_fn <- colorFactor(palette = "Dark2", domain = shooting_data[["race"]])
 
-# Create a map of the shootings using leaflet
-# The `addCircleMarkers()` function will make circles with radii based on zoom
 
 leaflet(data = shooting_data) %>%
-  addProviderTiles("Stamen.TonerLite") %>% # add Stamen Map Tiles
-  addCircleMarkers( # add markers for each shooting
+  addProviderTiles("Stamen.TonerLite") %>% 
+  addCircleMarkers( 
     lat = ~latitude,
     lng = ~longitude,
-    label = ~paste0(name, ", ", age), # add a hover label: victim's name and age
-    color = ~palette_fn(shooting_data[["race"]]), # color points by race
+    label = ~paste0(name, ", ", age), 
+    color = ~palette_fn(shooting_data[["race"]]), 
     fillOpacity = .6,
     radius = 6,
     stroke = FALSE
   ) %>%
-  addLegend( # include a legend on the plot
+  addLegend( 
     position = "topright",
     title = "Race",
-    pal = palette_fn, # the palette to label
-    values = shooting_data[["race"]], # again, using double-bracket notation
-    opacity = 1 # legend is opaque
+    pal = palette_fn, 
+    values = shooting_data[["race"]], 
+    opacity = 1 
   )
 
 
@@ -254,7 +251,7 @@ Although Black Americans make up less than 14% of the population, they have acco
 
 ### Conclusion
 
-We just walked through the iterative process of exploratory data analysis on a fatal shooting data set compiled by the Washington post. We plot a few graphs and made some formed some interesting hypothesis that is worth exploring further. Yaayy! we done! explore further and share your insight
+We just walked through the iterative process of exploratory data analysis on a fatal shooting data set compiled by the Washington post. We plotted a few graphs and formed some interesting hypothesis that is worth exploring further. Yaayy! we done! explore and share your insight
 
 You can download the code and data set used for this analysis here 
 
