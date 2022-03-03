@@ -11,7 +11,7 @@ authors: [Daniel Abban]
 lastmod: '2022-03-03T22:36:45Z'
 featured: no
 image:
-  caption: ''
+  caption: 'Photo by Kony Xyzx from Pexels'
   focal_point: ''
   preview_only: no
 projects: []
