@@ -1,0 +1,260 @@
+---
+title: Exploratory Analysis on Police Victims in the USA
+author: 'Daniel Abban'
+date: '2022-03-03'
+slug: eda-on-police-shootings
+categories: [EDA,Visualization]
+tags: [EDA, Visualization]
+subtitle: ''
+summary: ''
+authors: [Daniel Abban]
+lastmod: '2022-03-03T22:36:45Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library("leaflet")
+library(knitr)
+shooting_data <- read_csv("fatal-police-shootings-data.csv")
+
+shooting_data <- shooting_data %>%
+    mutate(across(race, ~ recode(., A = "asian",
+                               W = "white_non_hispanic",
+                               H = "hispanic",
+                               B = "black_non_hispanic",
+                               N = "native_american",
+                               O = "other"))) %>%
+    mutate(race = replace_na(race, "unknown"))
+```
+
+
+
+
+### Case Study
+
+On August 9, 2014, a police officer, Darren Wilson shoots and kills Michael Brown, an unarmed Black teenager in Ferguson, Missouri. This began a wild protest movement culminating in Black Lives Matter and an increased focus on police accountability nationwide. The Washington Post compiles those shootings in which a police officer, in the line of duty, shoots and kills a civilian
+
+
+This analysis demonstrates how to design basic summary information about the shooting incident as well as visualize the geographic distribution of where victims were killed by the police
+
+
+
+### Data Set
+The data contains records of every fatal shooting in the United States by a police officer in the line of duty since Jan. 1, 2015. Below are the description of some of the data attributes 
+
+* name: the name of the victim
+
+* date: the date of the fatal shooting in YYYY-MM-DD format
+
+* armed: indicates that the victim was armed with some sort of implement that a police officer believed could inflict harm
+
+* race
+  + W: White, non-Hispanic
+  + B: Black, non-Hispanic
+  + A: Asian
+  + N: Native American
+  + H: Hispanic
+  + O: Other
+  + None: unknown
+  
+* city: the municipality where the fatal shooting took place. Note that in some cases this field may contain a county name if a more specific municipality is unavailable or unknown.
+
+
+* flee: indicates that the victim was moving away from officers
+
+* threat_level: 
+  + attack: The attack category is meant to flag the highest level of threat. That would include incidents where officers or others were shot at, threatened with a gun, attacked with other weapons or physical force, etc
+  +other/undetermined: All other threats aside those listed above
+
+
+* latitude and longitude: the location of the shooting expressed as WGS84 coordinates, geocoded from addresses
+
+
+### Exploratory Data Analysis
+
+The goal of this section is to zone into specific aspects of the data set and try to find answers to some though provoking scenarios. Let's import the data and observe a few rows
+
+
+
+```{r}
+kable(head(shooting_data))
+```
+
+
+I'll like to see which weapons were used the most by the victims. Here are the top 5! 
+
+```{r echo=FALSE, warning=FALSE}
+
+top_5_arms <- shooting_data %>%
+  mutate(across(armed, as_factor)) %>%
+  count(armed, sort = TRUE, name = "Count") %>%
+  filter(!is.na(armed),
+         armed != "unarmed",
+         armed != "undetermined",
+         armed != "unknown weapon") %>%
+  head(5)
+
+
+
+
+top_5_arms %>%
+  mutate(armed = fct_reorder(armed, Count)) %>%
+  ggplot(aes(y = armed, x = Count)) +
+  geom_bar(stat = "identity") +
+  ylab("Weapons") +
+  theme_minimal() +
+  theme(axis.title.x=element_blank()) +
+  ggtitle("Top 5 Weapons Used by Shooting Victims")
+
+```
+Guns top the list of weapons used to threaten police officers followed by knifes. According to a report, 3 in 10 U.S. adults say they own a gun, and a quarter of U.S. adults say they or someone in their family have been threatened or intimidated by someone using a gun
+
+
+I'll like to narrow my analysis to **unarmed civilians**. Why would a police officer shoot an unarmed civilian
+
+
+let's find out how many **unarmed** civilians were killed by the police
+
+```{r}
+kable(shooting_data %>%
+  count(armed, name = "count") %>%
+  filter(armed == "unarmed"))
+```
+Interesting, 442 of the victims were completely unharmed, why where they killed then?, which threat could they possibly have posed to an armed police officer? or where they trying to escape? 
+
+The next plot displays a count of unarmed police victims against their threat level
+
+```{r}
+
+unarmed_and_flee <- shooting_data %>% 
+  mutate(flee = ifelse(shooting_data$flee == "Not fleeing",
+                       shooting_data$flee, "fleeing"),
+         threat_level = ifelse(shooting_data$threat_level == "attack", shooting_data$threat_level, "undetermined")) %>%
+  filter(!is.na(flee), armed == "unarmed") %>%
+  group_by(flee, threat_level) %>%
+  count(name = "victim_count") %>%
+  arrange(flee, rev(threat_level)) %>%
+  mutate(label_y = cumsum(victim_count) - 0.0005 * victim_count)
+
+
+
+
+
+ggplot(unarmed_and_flee, aes(x = flee, y = victim_count,
+                             fill = threat_level, label = victim_count)) +
+  geom_col(width = 0.6) +
+  theme_minimal() +
+  theme(axis.title.x=element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y = element_blank(),
+        line = element_blank(),
+        legend.position = "top") +
+  geom_text(size = 3, position = position_stack(vjust = 0.5)) +
+  scale_fill_brewer(palette = "Paired",labels = c("Attack", "Undetermined")) +
+  labs(fill = "Threat Level") +
+  ggtitle("Completely Unarmed But Still Got Killed")
+
+
+```
+Indeed, a few of the unarmed civilians attempted escape, and 59 of them were said to have attacked the officer. Since they were fleeing and completely unarmed, I suppose they verbally or physically assaulted the officer and fled
+
+The second bar indicates that 103 unarmed and non fleeing victims posed a major threat the the police officer. Again, they probably had physical combat with the officer before getting killed 
+
+
+I'm sure some of these civilians were mistakenly killed, as the data couldn't provide the threat level for many of the victims. 
+
+
+
+Next, we look at the age distribution of the victims grouped by their threat level
+
+```{r message=FALSE, warning=FALSE}
+
+age_threat_level <- shooting_data %>%
+  mutate(threat_level = ifelse(shooting_data$threat_level == "attack",
+                               shooting_data$threat_level, "undetermined"))
+
+
+
+
+  ggplot(age_threat_level, aes(age, colour = threat_level)) +
+  geom_freqpoly(binwidth = 5) +
+  labs(colour = "Threat Level") +
+  xlab("Age") +
+  ylab("Victim Count") +
+  theme_bw() +
+  theme(legend.position = c(.8, .3))
+
+  
+  
+```
+
+Majority of the victims fall between the ages of 25 and 40, and this age group posed a high level of threat to the officers
+
+
+We also observe a few victims below the ages of 12, lets check them out 
+
+```{r}
+kable(shooting_data %>%
+  filter(age <= 12) %>%
+  select(age, manner_of_death, armed, threat_level, flee))
+```
+
+3 out of 4 of these kids were unamred and not fleeing, I don't think a 6 year old or an 8 year old would physically abuse an officer to the point of getting killed. It's likely some of the victims were accidentally killed
+
+
+
+
+To wrap up, lets visualize the geographic distribution of the victims 
+
+```{r message=FALSE, warning=FALSE}
+
+ #Construct a color palette (scale) based on the `race` column
+palette_fn <- colorFactor(palette = "Dark2", domain = shooting_data[["race"]])
+
+# Create a map of the shootings using leaflet
+# The `addCircleMarkers()` function will make circles with radii based on zoom
+
+leaflet(data = shooting_data) %>%
+  addProviderTiles("Stamen.TonerLite") %>% # add Stamen Map Tiles
+  addCircleMarkers( # add markers for each shooting
+    lat = ~latitude,
+    lng = ~longitude,
+    label = ~paste0(name, ", ", age), # add a hover label: victim's name and age
+    color = ~palette_fn(shooting_data[["race"]]), # color points by race
+    fillOpacity = .6,
+    radius = 6,
+    stroke = FALSE
+  ) %>%
+  addLegend( # include a legend on the plot
+    position = "topright",
+    title = "Race",
+    pal = palette_fn, # the palette to label
+    values = shooting_data[["race"]], # again, using double-bracket notation
+    opacity = 1 # legend is opaque
+  )
+
+
+```
+
+
+```{r}
+kable(shooting_data %>%
+  count(race, sort = TRUE, name = "count") %>%
+  mutate(percentage = ceiling(count / sum(count) * 100)))
+```
+
+Although Black Americans make up less than 14% of the population, they have accounted for about 23% out of 7139 fatal shootings by the police since 2015.
+
+### Conclusion
+
+We just walked through the iterative process of exploratory data analysis on a fatal shooting data set compiled by the Washington post. We plot a few graphs and made some formed some interesting hypothesis that is worth exploring further. Yaayy! we done! explore further and share your insight
+
+You can download the code and data set used for this analysis here 
+
