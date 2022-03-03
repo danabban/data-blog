@@ -110,7 +110,7 @@ top_5_arms %>%
   ylab("Weapons") +
   theme_minimal() +
   theme(axis.title.x=element_blank()) +
-  ggtitle("Top 5 Weapons Used by Shooting Victims")
+  ggtitle("Top 5 Weapons Used by Victims")
 
 ```
 Guns top the list of weapons used to threaten police officers followed by knifes. According to a report, 3 in 10 U.S. adults say they own a gun, and a quarter of U.S. adults say they or someone in their family have been threatened or intimidated by someone using a gun
